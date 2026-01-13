@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-darkNavy text-white font-sans overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+    .animate-marquee {
+        animation: marquee 25s linear infinite;
+    }
+    .animate-marquee2 {
+        animation: marquee2 25s linear infinite;
+    }
+    .animate-bounce-slow {
+        animation: bounce 3s infinite;
+    }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+@keyframes marquee2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
