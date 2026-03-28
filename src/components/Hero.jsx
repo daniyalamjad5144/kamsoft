@@ -1,9 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroImg from '../assets/hero.png';
-import starImg from '../assets/star.png';
-import blobImg from '../assets/blob.png';
-import Button from './Button';
 import { ArrowUpRight } from 'lucide-react';
 
 const Hero = () => {

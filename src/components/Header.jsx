@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const Header = () => {
@@ -18,9 +19,9 @@ const Header = () => {
         <header className={`fixed top-0 left-0 w-full z-50 flex transition-transform duration-300 ${isScrolled ? '-translate-y-full md:translate-y-0' : ''}`}>
             {/* Left: Logo Section - Dark Navy */}
             <div className="bg-darkNavy text-white px-6 md:px-8 py-4 flex items-center justify-center md:justify-start min-w-[150px] md:min-w-[200px] lg:min-w-[220px]">
-                <div className="font-black text-xl md:text-2xl tracking-wider select-none">
+                <Link to="/" className="font-black text-xl md:text-2xl tracking-wider select-none hover:text-primaryRed transition-colors">
                     KAMSOFT
-                </div>
+                </Link>
             </div>
 
             {/* Right: Contact & Nav Section - White */}
@@ -57,12 +58,16 @@ const Header = () => {
 
                 {/* CTA Button - Hidden mobile */}
                 <div className="hidden lg:flex items-center gap-4 ml-auto">
-                    <Button className="bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl border-none text-sm px-6 py-3">
-                        Get a Quote!
-                    </Button>
-                    <Button className="bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl border-none text-sm px-6 py-3">
-                        Live Chat
-                    </Button>
+                    <Link to="/quote">
+                        <Button className="bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl border-none text-sm px-6 py-3 cursor-pointer">
+                            Get a Quote!
+                        </Button>
+                    </Link>
+                    <Link to="/chat">
+                        <Button className="bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl border-none text-sm px-6 py-3 cursor-pointer">
+                            Live Chat
+                        </Button>
+                    </Link>
                 </div>
             </div>
 
@@ -70,10 +75,9 @@ const Header = () => {
             {isMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-8 px-6 flex flex-col gap-6 animate-in slide-in-from-top-5 duration-300 lg:hidden h-screen bg-white/95 backdrop-blur-md z-50">
                     <nav className="flex flex-col gap-6 text-center">
-                        <a href="#" className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">HOME</a>
-                        <a href="#" className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">SERVICES</a>
-                        <a href="#" className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">PORTFOLIO</a>
-                        <a href="#" className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">CONTACT</a>
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">HOME</Link>
+                        <Link to="/quote" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">GET A QUOTE</Link>
+                        <Link to="/chat" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-darkNavy hover:text-primaryRed transition-colors">LIVE CHAT</Link>
                     </nav>
                     <div className="flex flex-col gap-4 mt-8 border-t border-gray-100 pt-8">
                         <a href="mailto:info@kamsoft.com" className="flex items-center justify-center gap-4 text-darkNavy text-lg font-medium">
